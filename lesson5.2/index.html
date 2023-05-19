@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <input type='text' id="user_input" placeholder="ta yu bichmeer baina" />
+    <button onclick="change_text()">click me</button>
+    <div class="poster-list" id="poster-list"></div>
+  </body>
+
+  <script>
+    let count = 0;
+    function change_text() {
+      const user_input = document.getElementById('user_input').value;
+
+      if (!user_input || user_input.length == '0') {
+        alert('utga oruulaagui baina');
+      } else {
+        count++;
+        const post = document.createElement('div');
+        post.className = 'poster-container';
+        post.innerHTML = `
+        <h3>${count}-r blog</h3>
+        <p>${user_input}</p>`;
+        const list = document.getElementById('poster-list');
+        list.appendChild(post);
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <form action="">
+      <label for="">fetch data</label>
+      <input type="button" value="btn" onclick="fetchData()" />
+      <br />
+      <label for="">search phone</label>
+      <input id="user_search" type="text" placeholder="search by brand" />
+      <input type="button" value="search" onclick="fetchData()" />
+    </form>
+    <h2>products</h2>
+
+    <div id="products" class="products-list"></div>
+  </body>
+  <script>
+    async function fetchData() {
+      let param = '';
+      if (document.getElementById('user_search').value) {
+        param = document.getElementById('user_search').value;
+      }
+      const data = await fetch(
+        `http://localhost:3000/filter-by-brand?brand=${param}`
+      )
+        .then((res) => res.json())
+        .catch((err) => console.log(err));
+
+      // const filtered_array = data.filter((phone) =>
+      //   phone.title.includes('iPhone')
+      // );
+      const list = document.getElementById('products');
+      list.replaceChildren();
+
+      for (let i = 0; i < data.length; i++) {
+        const { brand, category, price, title, images } = data[i];
+        addProduct({ brand, category, price, title, image_url: images[0] });
+      }
+    }
+    function addProduct({ brand, category, price, title, image_url }) {
+      const post = document.createElement('div');
+      post.className = 'product-container';
+      post.innerHTML = `
+      <a href="./product.html?name=${title}">
+    <h3>${title}</h3>
+    <p>${brand}  ${category}</p>
+    <p>${price}</p>
+    <img
+      src="${image_url}"
+      width="100%"
+      class="product-image"
+    />
+  </a>
+    `;
+      const list = document.getElementById('products');
+
+      list.appendChild(post);
+    }
+  </script>
+</html>

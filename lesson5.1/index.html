@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <p class="paragraph" id="test_id">test</p>
+    <div class="paragraph" id="test_id_1">
+      <p>test1</p>
+      <p>test2</p>
+    </div>
+    <p class="paragraph" id="test_id_2">test</p>
+    <div class="" id="test_id_3"></div>
+    <button onclick="change_text()">click me</button>
+  </body>
+
+  <script>
+    function change_text() { 
+      console.log('you clicked me');
+      const el3 = document.getElementById('test_id_3');
+
+      const child = document.createElement('div');
+      child.className = 'paragraph';
+      child.innerHTML = `<p>clicked me</p>`;
+      el3.appendChild(child);
+
+      //   el3.innerHTML += `
+      //     <div class="paragraph">clicked me</div>
+      //         `;
+    }
+
+    console.log('test');
+
+    const el1 = document.getElementById('test_id_1');
+    console.log(el1);
+
+    const el2 = document.getElementById('test_id_2');
+    console.log(el2);
+
+    el2.innerText = 'oorchlogdson text';
+  </script>
+</html>

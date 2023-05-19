@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="box" id="box"></div>
+    <input type="color" id="user_input" placeholder="ta yu bichmeer baina" />
+    <button onclick="change_text(this)">click me</button>
+  </body>
+
+  <script>
+    function change_text() {
+      const box_element = document.getElementById('box');
+
+      const color_value = document.getElementById('user_input').value;
+
+      box_element.style.backgroundColor = color_value;
+    }
+  </script>
+</html>

@@ -1,0 +1,19 @@
+body {
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+}
+
+.poster-list {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.poster-container {
+    background-color: burlywood;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 20px;
+    cursor: pointer;
+
+}

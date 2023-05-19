@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="">fetch data</label>
+      <input type="button" value="btn" onclick="fetchData()" />
+    </form>
+    <h2>products</h2>
+    <div id="products" class="products-list"></div>
+  </body>
+  <script>
+    async function fetchData() {
+      const data = await fetch('https://dummyjson.com/products')
+        .then((res) => res.json())
+        .then((data) => data.products)
+        .catch((err) => console.log(err));
+
+      const filtered_array = data.filter((phone) =>
+        phone.title.includes('iPhone')
+      );
+      for (let i = 0; i < filtered_array.length; i++) {
+        const { brand, category, price, title, images } = filtered_array[i];
+        addProduct({ brand, category, price, title, image_url: images[0] });
+      }
+    }
+    function addProduct({ brand, category, price, title, image_url }) {
+      const post = document.createElement('div');
+      post.className = 'product-container';
+      post.innerHTML = `
+    <h3>${title}</h3>
+    <p>${brand}  ${category}</p>
+    <p>${price}</p>
+    <img
+      src="${image_url}"
+      width="100%"
+      class="product-image"
+    />
+    `;
+      const list = document.getElementById('products');
+      list.appendChild(post);
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(15, 15, 15);
+      color: white;
+    }
+
+    .products-list {
+      width: 80%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+
+    .product-container {
+      padding: 12px;
+      background-color: blanchedalmond;
+      border-radius: 20px;
+      border: 1px solid grey;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      margin: 20px;
+    }
+
+    .product-image {
+      aspect-ratio: 3/2;
+    }
+  </style>
+</html>

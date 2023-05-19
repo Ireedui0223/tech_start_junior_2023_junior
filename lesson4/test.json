@@ -1,0 +1,25 @@
+{
+  "name": "Ireedui",
+  "age": 21,
+  "languages": [
+    { "name": "english", "stage": "beginner" },
+    { "name": "javascript", "stage": "beginner" },
+    { "name": "Mahan hel", "stage": "beginner" }
+  ],
+  "hotolbor": [
+    {
+      "name": "ISCI201",
+      "credit": 92,
+      "lessons": [
+        {
+          "name": "C",
+          "time": 120
+        },
+        {
+          "name": "Java",
+          "time": 120
+        }
+      ]
+    }
+  ]
+}

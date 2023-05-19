@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    background-color: rgb(15, 15, 15);
+    color: white;
+}
+
+.products-list {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.product-container {
+    padding: 12px;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 20px;
+}
+
+.product-image {
+    aspect-ratio: 3/2;
+}
